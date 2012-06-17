@@ -1,0 +1,17 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+
+/* TEAM */
+  UX/UI designer: J. Skopp
+  Site: hypestudio.sk
+  Twitter: zmetak
+  Location: Pezinok, Slovakia
+
+/* THANKS */
+  Names (& URL): HCI course forums + staff
+
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: Modernizr, jQuery
+  Software: PLAN.
