@@ -26,24 +26,40 @@
         Workflow
       </header>
       <div role="complementary">
-        <div class="past item">
+
+        <div class="future item shadowonly"></div>
+        <div class="future item">
           <img class="email" src="img/trans.png" />
           <p>
-            Marcel: Hello Jules, here are the key points you wanted to review...
+            Marcel: Hello Jules, here are the key points you wanted to review.
+          </p>
+        </div>
+        <div class="future current item">
+          <img class="email" src="img/trans.png" />
+          <p>
+            Marcel: Hello Jules, here are the key points you wanted to review.
           </p>
         </div>
         <div class="current item">
           <img class="email" src="img/trans.png" />
           <p>
-            Marcel: Hello Jules, here are the key points you wanted to review...
+            Marcel: Hello Jules, here are the key points you wanted to review.
           </p>
         </div>
-        <div class="future item">
+        <div class="past current item">
           <img class="email" src="img/trans.png" />
           <p>
-            Marcel: Hello Jules, here are the key points you wanted to review...
+            Marcel: Hello Jules, here are the key points you wanted to review.
           </p>
         </div>
+        <div class="past item">
+          <img class="email" src="img/trans.png" />
+          <p>
+            Marcel: Hello Jules, here are the key points you wanted to review.
+          </p>
+        </div>
+        <div class="past item shadowonly"></div>
+
       </div>
     </section>
 
@@ -52,20 +68,56 @@
         Personalflow
       </header>
       <div role="complementary">
-        <div class="past item">
+
+        <div class="future item shadowonly"></div>
+        <div class="future item">
+          <img class="email" src="img/trans.png" />
           <p>
-            Marcel: Hello Jules, here are the key points you wanted to review...
+            Marcel: Hello Jules, here are the key points you wanted to review.
           </p>
         </div>
+        <div class="future current item">
+          <img class="email" src="img/trans.png" />
+          <p>
+            Marcel: Hello Jules, here are the key points you wanted to review.
+          </p>
+        </div>
+        <div class="current item">
+          <img class="email" src="img/trans.png" />
+          <p>
+            Marcel: Hello Jules, here are the key points you wanted to review.
+          </p>
+        </div>
+        <div class="past current item">
+          <img class="email" src="img/trans.png" />
+          <p>
+            Marcel: Hello Jules, here are the key points you wanted to review.
+          </p>
+        </div>
+        <div class="past item">
+          <img class="email" src="img/trans.png" />
+          <p>
+            Marcel: Hello Jules, here are the key points you wanted to review.
+          </p>
+        </div>
+        <div class="past item shadowonly"></div>
+
       </div>
     </section>
 
     <section class="notes">
+      <img src="img/trans.png" class="blank" usemap="trianglemap"/>
+      <map id="trianglemap" name="trianglemap">
+        <area shape="poly" alt="" title="" coords="145,106,255,1,36,1" href="#map" target="" />
+      </map>
       <header>
         Notes
       </header>
-      <div role="main">
 
+      <div class="sketchboard">
+        <canvas id="sketchboard">
+          hello
+        </canvas>
       </div>
     </section>
 
@@ -73,7 +125,8 @@
     <script>
 		window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')
     </script>
-
+    <script src="js/libs/sketch.min.js"></script>
+    <script src="js/js.js"></script>
     <!--
     <script>
     var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {

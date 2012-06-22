@@ -235,55 +235,126 @@ td {
  Author:
  ========================================================================== */
 
+@import url(http://fonts.googleapis.com/css?family=Graduate);
+
 .workflow {
-	width: 185px;
+	width: 215px;
 	height: 2200px;
 	float: left;
+	font-size: 0.7em;
 	background: transparent url('../img/bg_workflow.png') 0 0 repeat;
 }
 
 .personalflow {
-	width: 185px;
+	width: 215px;
 	height: 2200px;
 	float: right;
+	font-size: 0.7em;
+	color: #d0dee6;
 	background: transparent url('../img/bg_personalflow.png') 0 0 repeat;
+}
+
+.personalflow header, .workflow header, .notes header {
+	font-family: 'Graduate', serif;
+	text-transform: uppercase;
+	font-size: 1.5em;
+	font-weight: 400;
+	padding: 15px 0 10px;
+	/*text-shadow: 0px 1px 3px #fff;*/
+	text-align: center;
+}
+
+.notes img.blank {
+	width: 290px;
+	height: 130px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -145px; /*half of pixel width*/
 }
 
 .notes {
 	display: inline;
 }
 
+.notes header {
+	background: transparent url('../img/notes_big_triangle.png') center top no-repeat;
+	padding: 15px 0 90px;
+	color: #f2eee9;
+}
+
+.sketchboard {
+}
+#sketchboard {
+	background: red;
+	width: 100%;
+}
+
 .item {
-	padding: 10px;
+	cursor: pointer;
 }
 
 .item img {
-	margin: 10px;
+	margin: 15px 10px;
 	float: left;
 }
 
+.item.shadowonly {
+	height: 15px;
+}
+
 .item p {
-	margin: 10px 0;
+	padding: 15px 10px;
+	margin: 0;
+}
+
+.workflow .current.item {
+	background: transparent url('../img/bg_workflow_current.png') 0px 0px repeat;
+}
+
+.personalflow .current.item {
+	background: transparent url('../img/bg_personalflow_current.png') 0px 0px repeat;
+}
+
+.future.item {
+	background: transparent url('../img/shadow_small_top.png') center bottom no-repeat;
+}
+
+.future.current.item {
+	background: transparent url('../img/shadow_big_top.png') center bottom no-repeat;
 }
 
 .past.item .email {
-	width: 28px;
-	height: 32px;
-	background: transparent url('../img/sprites.png') 0px -130px no-repeat;
+	width: 24px;
+	height: 22px;
+	background: transparent url('../img/sprites.png') -5px -132px no-repeat;
+}
+
+.past.item:hover .email {
+	width: 24px;
+	height: 22px;
+	background: transparent url('../img/sprites.png') -5px -164px no-repeat;
 }
 
 .current.item .email {
 	width: 32px;
 	height: 32px;
-	background: transparent url('../img/sprites.png') 0px 0px no-repeat;
+	background: transparent url('../img/sprites.png') 0px -2px no-repeat;
 }
 
 .current.item:hover .email {
 	width: 32px;
 	height: 32px;
-	background: transparent url('../img/sprites.png') 0px -32px no-repeat;
+	background: transparent url('../img/sprites.png') 0px -33px no-repeat;
 }
 
+.past.current.item {
+	background: transparent url('../img/shadow_big_bottom.png') center top no-repeat;
+}
+
+.past.item {
+	background: transparent url('../img/shadow_small_bottom.png') center top no-repeat;
+}
 
 /* =============================================================================
  Media Queries
