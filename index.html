@@ -25,7 +25,7 @@
       <header>
         Workflow
       </header>
-      <div role="complementary">
+      <div class="flowitems" role="complementary">
 
         <div class="future item shadowonly"></div>
         <div class="future item">
@@ -67,7 +67,7 @@
       <header>
         Personalflow
       </header>
-      <div role="complementary">
+      <div class="flowitems" role="complementary">
 
         <div class="future item shadowonly"></div>
         <div class="future item">
@@ -106,7 +106,7 @@
     </section>
 
     <section class="notes">
-      
+
       <header>
         Notes
         <img src="img/trans.png" class="blank" usemap="trianglemap"/>
@@ -118,25 +118,41 @@
       <div class="sketchWrap">
         <canvas id="sketchPad" width="100%" height="100%"></canvas>
       </div>
-      
+
       <div class="noteWrap">
-        <canvas id="notePad" width="100%" height="100%"></canvas>
+        <canvas id="notePad"></canvas>
       </div>
-      
-      <div class="tooltipWrap">
-        <div class="tooltip shadow">
+
+      <div class="stickyWrap">
+        <div class="sticky shadow sides">
           <textarea placeholder="New note"></textarea>
         </div>
       </div>
-      
+
     </section>
+
+    <div class="tooltipWrap">
+      <div class="tooltip shadow sides">
+        <div class="message">
+          <h1>Welcome to the Notesflow!</h1>
+          <p>Log in with one of these services:</p>
+          <a class="facebook" title="facebook" href="#"></a>
+          <a class="twitter" title="twitter" href="#"></a>
+          <a class="google" title="google" href="#"></a>
+        </div>
+        <a class="button" href="#">okay</a>
+      </div>
+    </div>
+
+    <div id="loading"><img src="img/loading.gif" />
+    </div>
 
     <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
     <script>
 		window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')
     </script>
-    <script src="js/libs/canvastext.js"></script>
-    <script src="js/libs/sketch.js"></script>
+    <script src="js/libs/sketch.min.js"></script>
+    <script src="js/libs/jquery-ui-1.8.21.custom.min.js"></script>
     <script src="js/js.js"></script>
     <!--
     <script>
