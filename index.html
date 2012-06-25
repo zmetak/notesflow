@@ -106,26 +106,37 @@
     </section>
 
     <section class="notes">
-      <img src="img/trans.png" class="blank" usemap="trianglemap"/>
-      <map id="trianglemap" name="trianglemap">
-        <area shape="poly" alt="" title="" coords="145,106,255,1,36,1" href="#map" target="" />
-      </map>
+      
       <header>
         Notes
+        <img src="img/trans.png" class="blank" usemap="trianglemap"/>
+        <map id="trianglemap" name="trianglemap">
+          <area shape="poly" alt="" title="" coords="145,106,255,1,36,1" href="#map" target="" />
+        </map>
       </header>
 
-      <div class="sketchboard">
-        <canvas id="sketchboard">
-          hello
-        </canvas>
+      <div class="sketchWrap">
+        <canvas id="sketchPad" width="100%" height="100%"></canvas>
       </div>
+      
+      <div class="noteWrap">
+        <canvas id="notePad" width="100%" height="100%"></canvas>
+      </div>
+      
+      <div class="tooltipWrap">
+        <div class="tooltip shadow">
+          <textarea placeholder="New note"></textarea>
+        </div>
+      </div>
+      
     </section>
 
     <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
     <script>
 		window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')
     </script>
-    <script src="js/libs/sketch.min.js"></script>
+    <script src="js/libs/canvastext.js"></script>
+    <script src="js/libs/sketch.js"></script>
     <script src="js/js.js"></script>
     <!--
     <script>

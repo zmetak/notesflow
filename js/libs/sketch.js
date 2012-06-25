@@ -106,7 +106,7 @@ var __slice = Array.prototype.slice;
     };
     Sketch.prototype.redraw = function() {
       var sketch;
-      this.el.width = this.canvas.width();
+      this.el.width = this.canvas.width(); console.log(this.el.height);
       this.context = this.el.getContext('2d');
       sketch = this;
       $.each(this.actions, function() {
