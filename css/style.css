@@ -265,11 +265,11 @@ td {
 }
 
 .notes {
-	/*display: inline;*/
+	height: 2200px;
 }
 
 .notes header {
-	background: transparent url('../img/trianglesprite.png') center top no-repeat;
+	background: transparent url('../img/trianglesprite2.png') center top no-repeat;
 	padding: 15px 0 0;
 	color: #f2eee9;
 	z-index: 500;
@@ -328,12 +328,9 @@ td {
 
 .item {
 	cursor: pointer;
+	clear: both;
 }
 
-.item img {
-	margin: 15px 10px;
-	float: left;
-}
 
 .item.shadowonly {
 	height: 15px;
@@ -342,6 +339,26 @@ td {
 .item p {
 	padding: 15px 10px;
 	margin: 0;
+}
+
+.item img {
+	margin: 15px 10px;
+	float: left;
+	background: transparent url('../img/sprites.png') 0 0 no-repeat;
+}
+
+.current.item img {
+	width: 32px;
+	height: 32px;
+}
+
+.actual.current.item {
+	height: 80px;
+}
+
+.past.item img,.future.item img {
+	width: 24px;
+	height: 26px;
 }
 
 .workflow .current.item {
@@ -360,28 +377,84 @@ td {
 	background: transparent url('../img/shadow_big_top.png') center bottom no-repeat;
 }
 
-.past.item .email {
-	width: 24px;
-	height: 22px;
-	background: transparent url('../img/sprites.png') -5px -132px no-repeat;
+.workflow .past.item .email,.workflow .future.item .email {
+	background-position: -5px -96px;
 }
 
-.past.item:hover .email {
-	width: 24px;
-	height: 22px;
-	background: transparent url('../img/sprites.png') -5px -164px no-repeat;
+.workflow .past.item:hover .email,.workflow .future.item:hover .email  {
+	background-position: -5px -64px;
 }
 
-.current.item .email {
-	width: 32px;
-	height: 32px;
-	background: transparent url('../img/sprites.png') 0px -2px no-repeat;
+.personalflow .past.item .email,.personalflow .future.item .email {
+	background-position: -37px -96px;
 }
 
-.current.item:hover .email {
-	width: 32px;
-	height: 32px;
-	background: transparent url('../img/sprites.png') 0px -33px no-repeat;
+.personalflow .past.item:hover .email,.personalflow .future.item:hover .email  {
+	background-position: -37px -64px;
+}
+
+.workflow .current.item .email {
+	background-position: 0px -33px;
+}
+
+.workflow .current.item:hover .email {
+	background-position: 0px -2px;
+}
+
+.personalflow .current.item .email {
+	background-position: -32px -33px;
+}
+
+.personalflow .current.item:hover .email {
+	background-position: -32px -2px;
+}
+
+.workflow .past.item .meeting,.workflow .future.item .meeting {
+	background-position: -3px -223px;
+}
+
+.workflow .past.item:hover .meeting,.workflow .future.item:hover .meeting  {
+	background-position: -3px -192px;
+}
+
+.personalflow .past.item .fb,.personalflow .future.item .fb {
+	background-position: -35px -223px;
+}
+
+.personalflow .past.item:hover .fb,.personalflow .future.item:hover .fb  {
+	background-position: -35px -192px;
+}
+
+.workflow .past.item .report,.workflow .future.item .report {
+	background-position: -3px -287px;
+}
+
+.workflow .past.item:hover .report,.workflow .future.item:hover .report  {
+	background-position: -3px -256px;
+}
+
+.personalflow .past.item .tt,.personalflow .future.item .tt {
+	background-position: -35px -287px;
+}
+
+.personalflow .past.item:hover .tt,.personalflow .future.item:hover .tt  {
+	background-position: -35px -256px;
+}
+
+.workflow .past.item .event,.workflow .future.item .event {
+	background-position: -3px -159px;
+}
+
+.workflow .past.item:hover .event,.workflow .future.item:hover .event  {
+	background-position: -3px -128px;
+}
+
+.personalflow .past.item .event,.personalflow .future.item .event {
+	background-position: -35px -159px;
+}
+
+.personalflow .past.item:hover .event,.personalflow .future.item:hover .event  {
+	background-position: -35px -128px;
 }
 
 .past.current.item {
@@ -392,90 +465,241 @@ td {
 	background: transparent url('../img/shadow_small_bottom.png') center top no-repeat;
 }
 
-.tooltipWrap {
-	display: none;
+.tooltipWrap,.tourWrap {
+	display:none;
 	position: absolute;
-	left: 50%;
-	margin-left: -305px;
-	top: 200px;
 	z-index: 200;
+	max-width: 500px;
 }
 
-.tooltip {
+.tooltip,.tour {
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
 	padding: 20px;
 	background: transparent url('../img/bg_tooltip.png') repeat;
+	font-size: 0.8em;
 }
 
-.tooltip h1 {
+.tooltip h1,.tour h1 {
 	font-family: 'Graduate', serif;
 	text-transform: uppercase;
-	font-size: 2.3em;
+	letter-spacing: 2px;
+	font-size: 3em;
 	font-weight: 400;
+	margin: 20px 0 0;
 }
 
-.facebook,.google,.twitter {
-	background: transparent url('../img/socialsprite2.png') 0px 0px no-repeat;
-	width: 90px;
-	height: 90px;
+.tooltip h2,.tour h2 {
+	font-family: 'Graduate', serif;
+	text-align: right;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 3em;
+	font-weight: 400;
+	margin: 0 0 0;
+}
+
+.tourWrap {
+	left: 50%;
+	margin-left: -250px;
+	top: 150px;
+	width: 500px;
+}
+
+.tour {
+	background: transparent url('../img/bg_tour.png') repeat;
+}
+
+.tour p.right {
+	font-family: 'Graduate', serif;
+	/*text-transform: uppercase;*/
+	font-size: 2em;
+	font-weight: 400;
+	margin: 20px 0 0;
+}
+
+.social{
+	background: transparent url('../img/social.png') 0px -177px no-repeat;
+	width: 460px;
+	height: 177px;
 	display: inline-block;
 }
-
-.facebook {
-	background-position: 0px -270px;/*0px -256px;*/
-}
-
-.google {
-	background-position: 0px -90px/*0px -128px;*/
-}
-
-.twitter {
+.social:hover{
 	background-position: 0px 0px;
-}
-
-.facebook:hover {
-	background-position: -90px -270px;/*-128px -256px;*/
-}
-
-.google:hover {
-	background-position: -90px -90px;/*-128px -128px;*/
-}
-
-.twitter:hover {
-	background-position: -90px 0px;/*-128px 0px;*/
 }
 
 a.button,a.button:link,a.button:visited,a.button:active {
 	color: rgb(60,60,60);
 	text-decoration: none;
-	background-color: rgba(210,210,210,0.4);
-	padding: 10px;
+	background-color: rgba(210,210,210,0.5);
+	padding: 7px 10px;
+	margin-top: 10px;
+	float: left;
 }
 
 a.button:hover {
-	background-color: rgba(255,255,255,0.7);
+	background-color: rgba(255,255,255,0.8);
+}
+
+a.button.primary {
+  	color: #c0c0c0;
+	background-color: rgba(0,0,0,0.6);
+	float: right;
+}
+
+a.button.primary:hover {
+  	color: #fff;
+	background-color: rgba(0,0,0,0.8);
 }
 
 .stickyWrap {
 	position: absolute;
 	display: none;
+	font-size: 0.8em;
 }
 
 .sticky textarea {
+	position: relative;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
 	border: 0;
-	width: 100%;
-	height: 100%;
+	width: 200px;
+	height: 200px;
+	display: block;
 	background: transparent;
 	padding: 12px;
+	
 }
 
 .sticky {
 	background: #fff;
+}
+
+.sticky .message {
+	display: inline;
+}
+
+.sticky .button {
+	display: none;
+}
+
+.sticky .tools{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	z-index: 400;
+	text-align: right;
+}
+
+.sticky .tools a.close,.sticky .tools a.pin{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-left: 5px;
+	float: left;
+	background: transparent url('../img/sprites2.png') -32px -16px no-repeat;
+}
+
+.sticky:hover .tools a.close{
+	background-position: -16px -16px;
+}
+
+.sticky .tools a.close:hover{
+	background-position: 0px -16px;
+}
+
+.sticky .tools a.pin{
+	background-position: -32px -48px;
+}
+
+.sticky:hover .tools a.pin{
+	background-position: -16px -48px;
+}
+
+.sticky .tools a.pin:hover{
+	background-position: 0px -48px;
+}
+
+.ie9 .mailWrap {
+	top: 374px;
+}
+
+.mailWrap,.calendarWrap {
+	display:none;
+	position: absolute;
+	top: 364px;
+	left: 215px;
+	background: transparent url('../img/bg_notes_mail.png') 0 0 repeat;
+	width: 435px;
+	font-size: 0.7em;
+	font-weight: 400;
+	z-index: 0;
+}
+
+.mailWrap textarea {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;    
+	background-color: transparent;
+	border: 1px solid #f0f0f0;
+	width: 315px;
+	margin: 0 60px 20px;
+	padding: 10px;
+	z-index: 450;
+}
+.mail {
+	background: transparent url('../img/bg_itempointer.png') 0 50px no-repeat;
+	padding: 40px 60px 60px;
+}
+.mail .info,.oldmail .info {
+	margin: 0;
+	color: #bcbcbc;
+}
+.oldmail {
+	height: 26px;
+	background: transparent url('../img/bg_nextmail.png') left bottom no-repeat;
+}
+
+.oldmail .info {
+	padding: 7px 60px 0;
+}
+
+
+.sketchTools {
+	display: none;
+	position: absolute;
+	bottom: 60px;
+	right: 160px;
+	transform:rotate(-45deg);
+	-ms-transform:rotate(-45deg); /* IE 9 */
+	-moz-transform:rotate(-45deg); /* Firefox */
+	-webkit-transform:rotate(-45deg); /* Safari and Chrome */
+	-o-transform:rotate(-45deg); /* Opera */
+	z-index: -1;
+}
+
+.calendarWrap {
+	left: auto;
+	top: 328px;
+	right: 215px;
+}
+.ie9 .calendarWrap {
+	top: 338px;
+}
+.calendar {
+	background: transparent url('../img/bg_calendarpointer.png') right 50px no-repeat;
+	padding: 40px 60px 60px;
+}
+.calendar table {
+	table-layout: fixed;
+	border: 1px solid #f0f0f0;
+	width: 315px;
+	text-align: center;
+}
+.calendar table td {
+	width: 45px;
 }
 
 .shadow {
@@ -570,7 +794,7 @@ body {
 
 	body {
 		width: 712px;
-		padding: 48px 28px 60px;
+		padding: 0px 28px 60px;
 	}
 }
 
@@ -586,7 +810,7 @@ body {
 
 	body {
 		width: 252px;
-		padding: 48px 34px 60px;
+		padding: 0px 34px 60px;
 	}
 
 }
@@ -603,7 +827,7 @@ body {
 
 	body {
 		width: 436px;
-		padding: 36px 22px 48px;
+		padding: 0px 22px 48px;
 	}
 
 }
@@ -659,6 +883,9 @@ body {
 }
 .clearfix {
 	*zoom: 1;
+}
+.right {
+	text-align: right;
 }
 
 /* =============================================================================
