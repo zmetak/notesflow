@@ -99,12 +99,26 @@ $(function() {
 				var w = $sW.width();
 				var y = $sW.position().top;
 				var x = $sW.position().left;
+				$sW.addClass('removalTarget');
 				$('.tooltipWrap').css({
 					top : y,
 					left : x + w + 8,
 					margin : 0
-				}).show('fade', 500).find('.message').html('Do you want to close the sticky note?').siblings('.button').hide().siblings('.close,.action1').show().filter('.action1').addClass('primary').text('continue using it');
+				}).show('fade', 500).find('.message').html('Do you want to remove the sticky note?').siblings('.button').hide().siblings('.remove,.action1').show().filter('.action1').addClass('primary').text('continue using it');
 			}
+		});
+
+		$('.button.remove').on('click', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			$(this).closest('.tooltipWrap').hide('fade', 500);
+			$('.removalTarget.stickyWrap:not(.template)').hide('fade', 500);
+		});
+		
+		$('.button.action1').on('click', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			$(this).closest('.tooltipWrap').hide('fade', 500);
 		});
 
 		/*
@@ -212,6 +226,7 @@ $(function() {
 			 {obj:'.workflow',evnt:'click',xo:'10',yo:'100',text:'Unfortunately there wasnt enough time to implement any reasonable functionality. Thats why the stripped out mail is being shown.'},
 			 {obj:'.personalflow',evnt:'click',xo:'70%',yo:'100',text:'Doh, hopefuly this fancy minimalist calendar would keep you from requesting any more functionality.'},
 			 {obj:'.sketchTools',evnt:'click',xo:'70%',yo:'80%',text:'There is a lot of potential here - different colors, exporting to friends, sharing via social networks, sharing screen while drawing etc...'},
+			 {obj:'.notes',evnt:'click',xo:'20%',yo:'20%',text:'Try to write something in the textbox and remove the sticky.'},
 			 ];//*/
 			$('.tooltip').data('show', true);
 			$.each(tt, function(i, v) {
