@@ -278,6 +278,8 @@ $(function() {
 		$('.personalflow .item').on('click',function(){$('.calendarWrap').show('slide',{direction:'right'})});
 		$('.workflow .item').on('click',function(){$('.mailWrap').show('slide',{direction:'left'})});
 		$('.mailWrap textarea').on('click',function(e){e.stopPropagation();});
+		
+		//https://www.facebook.com/feeds/notifications.php?id=617944136&viewer=617944136&key=AWgOG2wCQbiGxCsU&format=rss20
 
 	});
 });
