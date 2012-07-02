@@ -1,3 +1,9 @@
+<?php
+
+/*========================================session start============================================*/
+session_start();
+
+?>
 <!DOCTYPE HTML>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -319,7 +325,10 @@
           <p>
             Log in with one of these services...
           </p>
-          <a class="social" title="facebook or twitter" href="#facebookortwitter"></a>
+          <div>
+	          <a class="social twitter" title="twitter" href="#socialtwitter"></a>
+	          <a class="social facebook" title="facebook" href="#socialfacebook"></a>
+          </div>
           <p class="right">
             ...or you could take a tour instead!
           </p>

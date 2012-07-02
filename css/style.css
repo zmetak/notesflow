@@ -275,7 +275,7 @@ td {
 	z-index: 500;
 }
 
-.notes img.blank,.notes header {
+.notes img.blank, .notes header {
 	position: absolute;
 	top: 0;
 	left: 50%;
@@ -291,7 +291,7 @@ td {
 	top: 0;
 	height: 100%;
 	width: 100%;
-	z-index: 1000;
+	z-index: 900;
 }
 
 #loading img {
@@ -315,7 +315,7 @@ td {
 	z-index: 300;
 }
 
-#sketchPad{
+#sketchPad {
 	background: transparent;
 	width: 100%;
 	height: 100%;
@@ -330,7 +330,6 @@ td {
 	cursor: pointer;
 	clear: both;
 }
-
 
 .item.shadowonly {
 	height: 15px;
@@ -356,7 +355,7 @@ td {
 	height: 80px;
 }
 
-.past.item img,.future.item img {
+.past.item img, .future.item img {
 	width: 24px;
 	height: 26px;
 }
@@ -377,19 +376,19 @@ td {
 	background: transparent url('../img/shadow_big_top.png') center bottom no-repeat;
 }
 
-.workflow .past.item .email,.workflow .future.item .email {
+.workflow .past.item .email, .workflow .future.item .email {
 	background-position: -5px -96px;
 }
 
-.workflow .past.item:hover .email,.workflow .future.item:hover .email  {
+.workflow .past.item:hover .email, .workflow .future.item:hover .email {
 	background-position: -5px -64px;
 }
 
-.personalflow .past.item .email,.personalflow .future.item .email {
+.personalflow .past.item .email, .personalflow .future.item .email {
 	background-position: -37px -96px;
 }
 
-.personalflow .past.item:hover .email,.personalflow .future.item:hover .email  {
+.personalflow .past.item:hover .email, .personalflow .future.item:hover .email {
 	background-position: -37px -64px;
 }
 
@@ -409,51 +408,51 @@ td {
 	background-position: -32px -2px;
 }
 
-.workflow .past.item .meeting,.workflow .future.item .meeting {
+.workflow .past.item .meeting, .workflow .future.item .meeting {
 	background-position: -3px -223px;
 }
 
-.workflow .past.item:hover .meeting,.workflow .future.item:hover .meeting  {
+.workflow .past.item:hover .meeting, .workflow .future.item:hover .meeting {
 	background-position: -3px -192px;
 }
 
-.personalflow .past.item .fb,.personalflow .future.item .fb {
+.personalflow .past.item .fb, .personalflow .future.item .fb {
 	background-position: -35px -223px;
 }
 
-.personalflow .past.item:hover .fb,.personalflow .future.item:hover .fb  {
+.personalflow .past.item:hover .fb, .personalflow .future.item:hover .fb {
 	background-position: -35px -192px;
 }
 
-.workflow .past.item .report,.workflow .future.item .report {
+.workflow .past.item .report, .workflow .future.item .report {
 	background-position: -3px -287px;
 }
 
-.workflow .past.item:hover .report,.workflow .future.item:hover .report  {
+.workflow .past.item:hover .report, .workflow .future.item:hover .report {
 	background-position: -3px -256px;
 }
 
-.personalflow .past.item .tt,.personalflow .future.item .tt {
+.personalflow .past.item .tt, .personalflow .future.item .tt {
 	background-position: -35px -287px;
 }
 
-.personalflow .past.item:hover .tt,.personalflow .future.item:hover .tt  {
+.personalflow .past.item:hover .tt, .personalflow .future.item:hover .tt {
 	background-position: -35px -256px;
 }
 
-.workflow .past.item .event,.workflow .future.item .event {
+.workflow .past.item .event, .workflow .future.item .event {
 	background-position: -3px -159px;
 }
 
-.workflow .past.item:hover .event,.workflow .future.item:hover .event  {
+.workflow .past.item:hover .event, .workflow .future.item:hover .event {
 	background-position: -3px -128px;
 }
 
-.personalflow .past.item .event,.personalflow .future.item .event {
+.personalflow .past.item .event, .personalflow .future.item .event {
 	background-position: -35px -159px;
 }
 
-.personalflow .past.item:hover .event,.personalflow .future.item:hover .event  {
+.personalflow .past.item:hover .event, .personalflow .future.item:hover .event {
 	background-position: -35px -128px;
 }
 
@@ -465,23 +464,27 @@ td {
 	background: transparent url('../img/shadow_small_bottom.png') center top no-repeat;
 }
 
-.tooltipWrap,.tourWrap {
-	display:none;
+.tooltipWrap, .tourWrap {
+	display: none;
 	position: absolute;
 	z-index: 200;
 	max-width: 500px;
 }
 
-.tooltip,.tour {
+.tourWrap {
+	z-index: 1000;
+}
+
+.tooltip, .tour {
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box;         /* Opera/IE 8+ */
+	-moz-box-sizing: border-box; /* Firefox, other Gecko */
+	box-sizing: border-box; /* Opera/IE 8+ */
 	padding: 20px;
 	background: transparent url('../img/bg_tooltip.png') repeat;
 	font-size: 0.8em;
 }
 
-.tooltip h1,.tour h1 {
+.tooltip h1, .tour h1 {
 	font-family: 'Graduate', serif;
 	text-transform: uppercase;
 	letter-spacing: 2px;
@@ -490,7 +493,7 @@ td {
 	margin: 20px 0 0;
 }
 
-.tooltip h2,.tour h2 {
+.tooltip h2, .tour h2 {
 	font-family: 'Graduate', serif;
 	text-align: right;
 	text-transform: uppercase;
@@ -519,17 +522,46 @@ td {
 	margin: 20px 0 0;
 }
 
-.social{
+.social {
 	background: transparent url('../img/social.png') 0px -177px no-repeat;
-	width: 460px;
+	width: 230px;
 	height: 177px;
-	display: inline-block;
+	display: block;
+	float: left;
 }
-.social:hover{
+.social.facebook {
+	background-position: -230px -177px;
+}
+
+.social.twitter:hover {
 	background-position: 0px 0px;
 }
 
-a.button,a.button:link,a.button:visited,a.button:active {
+.social.facebook:hover {
+	background-position: -230px 0px;
+}
+
+a,a:link,a:visited,a:active {
+	text-decoration: underline;
+}
+
+a,a:link,a:visited,a:active,.workflow a,.workflow a:link,.workflow a:visited,.workflow a:active {
+	color: rgb(60,60,60);
+}
+
+a:hover,.workflow a:hover {
+	color: rgb(20,20,20);
+}
+
+.personalflow a,.personalflow a:link,.personalflow a:visited,.personalflow a:active {
+	color: #d0dee6;
+}
+
+.personalflow a:hover {
+	color: rgb(255,255,255);
+}
+
+a.button, a.button:link, a.button:visited, a.button:active {
 	color: rgb(60,60,60);
 	text-decoration: none;
 	background-color: rgba(210,210,210,0.5);
@@ -543,13 +575,13 @@ a.button:hover {
 }
 
 a.button.primary {
-  	color: #c0c0c0;
+	color: #c0c0c0;
 	background-color: rgba(0,0,0,0.6);
 	float: right;
 }
 
 a.button.primary:hover {
-  	color: #fff;
+	color: #fff;
 	background-color: rgba(0,0,0,0.8);
 }
 
@@ -562,15 +594,14 @@ a.button.primary:hover {
 .sticky textarea {
 	position: relative;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box;         /* Opera/IE 8+ */
+	-moz-box-sizing: border-box; /* Firefox, other Gecko */
+	box-sizing: border-box; /* Opera/IE 8+ */
 	border: 0;
 	width: 200px;
 	height: 200px;
 	display: block;
 	background: transparent;
 	padding: 12px;
-	
 }
 
 .sticky {
@@ -585,7 +616,7 @@ a.button.primary:hover {
 	display: none;
 }
 
-.sticky .tools{
+.sticky .tools {
 	position: absolute;
 	top: 5px;
 	right: 5px;
@@ -593,7 +624,7 @@ a.button.primary:hover {
 	text-align: right;
 }
 
-.sticky .tools a.close,.sticky .tools a.pin{
+.sticky .tools a.close, .sticky .tools a.pin {
 	display: inline-block;
 	width: 16px;
 	height: 16px;
@@ -602,23 +633,23 @@ a.button.primary:hover {
 	background: transparent url('../img/sprites2.png') -32px -16px no-repeat;
 }
 
-.sticky:hover .tools a.close{
+.sticky:hover .tools a.close {
 	background-position: -16px -16px;
 }
 
-.sticky .tools a.close:hover{
+.sticky .tools a.close:hover {
 	background-position: 0px -16px;
 }
 
-.sticky .tools a.pin{
+.sticky .tools a.pin {
 	background-position: -32px -48px;
 }
 
-.sticky:hover .tools a.pin{
+.sticky:hover .tools a.pin {
 	background-position: -16px -48px;
 }
 
-.sticky .tools a.pin:hover{
+.sticky .tools a.pin:hover {
 	background-position: 0px -48px;
 }
 
@@ -626,8 +657,8 @@ a.button.primary:hover {
 	top: 374px;
 }
 
-.mailWrap,.calendarWrap {
-	display:none;
+.mailWrap, .calendarWrap {
+	display: none;
 	position: absolute;
 	top: 364px;
 	left: 215px;
@@ -640,8 +671,8 @@ a.button.primary:hover {
 
 .mailWrap textarea {
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box;    
+	-moz-box-sizing: border-box; /* Firefox, other Gecko */
+	box-sizing: border-box;
 	background-color: transparent;
 	border: 1px solid #f0f0f0;
 	width: 315px;
@@ -653,7 +684,7 @@ a.button.primary:hover {
 	background: transparent url('../img/bg_itempointer.png') 0 50px no-repeat;
 	padding: 40px 60px 60px;
 }
-.mail .info,.oldmail .info {
+.mail .info, .oldmail .info {
 	margin: 0;
 	color: #bcbcbc;
 }
@@ -666,17 +697,16 @@ a.button.primary:hover {
 	padding: 7px 60px 0;
 }
 
-
 .sketchTools {
 	display: none;
 	position: absolute;
 	bottom: 60px;
 	right: 160px;
-	transform:rotate(-45deg);
-	-ms-transform:rotate(-45deg); /* IE 9 */
-	-moz-transform:rotate(-45deg); /* Firefox */
-	-webkit-transform:rotate(-45deg); /* Safari and Chrome */
-	-o-transform:rotate(-45deg); /* Opera */
+	transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg); /* IE 9 */
+	-moz-transform: rotate(-45deg); /* Firefox */
+	-webkit-transform: rotate(-45deg); /* Safari and Chrome */
+	-o-transform: rotate(-45deg); /* Opera */
 	z-index: -1;
 }
 
@@ -703,65 +733,63 @@ a.button.primary:hover {
 }
 
 .shadow {
-	position:relative;
-	-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 60px rgba(0, 0, 0, 0.1) inset;
-	   -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-	        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	position: relative;
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
-.shadow:before,
-.shadow:after {
-    content:"";
-    position:absolute; 
-    z-index:-2;
+.shadow:before, .shadow:after {
+	content: "";
+	position: absolute;
+	z-index: -2;
 }
 
-.lifted:before,
-.lifted:after { 
-    bottom:15px;
-    left:10px;
-    width:50%;
-    height:20%;
-    max-width:300px;
-    -webkit-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);   
-       -moz-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
-            box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
-    -webkit-transform:rotate(-3deg);    
-       -moz-transform:rotate(-3deg);   
-        -ms-transform:rotate(-3deg);   
-         -o-transform:rotate(-3deg);
-            transform:rotate(-3deg);
+.lifted:before, .lifted:after {
+	bottom: 15px;
+	left: 10px;
+	width: 50%;
+	height: 20%;
+	max-width: 300px;
+	-webkit-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+	-moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+	box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+	-webkit-transform: rotate(-3deg);
+	-moz-transform: rotate(-3deg);
+	-ms-transform: rotate(-3deg);
+	-o-transform: rotate(-3deg);
+	transform: rotate(-3deg);
 }
 
 .lifted:after {
-    right:10px; 
-    left:auto;
-    -webkit-transform:rotate(3deg);   
-       -moz-transform:rotate(3deg);  
-        -ms-transform:rotate(3deg);  
-         -o-transform:rotate(3deg);
-            transform:rotate(3deg);
+	right: 10px;
+	left: auto;
+	-webkit-transform: rotate(3deg);
+	-moz-transform: rotate(3deg);
+	-ms-transform: rotate(3deg);
+	-o-transform: rotate(3deg);
+	transform: rotate(3deg);
 }
 
 .sides:before {
-    top:10px;
-    bottom:10px;
-    left:0;
-    right:50%;
-    -webkit-box-shadow:0 0 15px rgba(0,0,0,0.6);
-    -moz-box-shadow:0 0 15px rgba(0,0,0,0.6);
-    box-shadow:0 0 60px rgba(0,0,0,0.6);
-    -moz-border-radius:50px / 100px;
-    border-radius:50px / 100px;
+	top: 10px;
+	bottom: 10px;
+	left: 0;
+	right: 50%;
+	-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.6);
+	-moz-box-shadow: 0 0 15px rgba(0,0,0,0.6);
+	box-shadow: 0 0 60px rgba(0,0,0,0.6);
+	-moz-border-radius: 50px /100px;
+	border-radius: 50px /100px;
 }
 
 .sides:before {
-    top:10px;
-    bottom:10px;
-    left:30px;
-    right:30px;
-    -moz-border-radius:100px / 50px;
-    border-radius:100px / 50px;
+	top: 10px;
+	bottom: 10px;
+	left: 30px;
+	right: 30px;
+	-moz-border-radius: 100px /50px;
+	border-radius: 100px /50px;
 }
 
 /* =============================================================================
