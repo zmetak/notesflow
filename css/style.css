@@ -264,6 +264,23 @@ td {
 	text-align: center;
 }
 
+footer {
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	margin-left: -84px;
+	font-size: 0.8em;
+}
+
+footer a,footer a:link,footer a:visited,footer a:active {
+	text-decoration: none;
+	color: rgb(100,100,100);
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
 .notes {
 	height: 2200px;
 }
@@ -291,7 +308,7 @@ td {
 	top: 0;
 	height: 100%;
 	width: 100%;
-	z-index: 900;
+	z-index: 600;
 }
 
 #loading img {
@@ -392,19 +409,19 @@ td {
 	background-position: -37px -64px;
 }
 
-.workflow .current.item .email {
+.workflow .actual.current.item .email {
 	background-position: 0px -33px;
 }
 
-.workflow .current.item:hover .email {
+.workflow .actual.current.item:hover .email {
 	background-position: 0px -2px;
 }
 
-.personalflow .current.item .email {
+.personalflow .actual.current.item .email {
 	background-position: -32px -33px;
 }
 
-.personalflow .current.item:hover .email {
+.personalflow .actual.current.item:hover .email {
 	background-position: -32px -2px;
 }
 
@@ -414,6 +431,22 @@ td {
 
 .workflow .past.item:hover .meeting, .workflow .future.item:hover .meeting {
 	background-position: -3px -192px;
+}
+
+.workflow .actual.current.item .event {
+	background-position: 0px -416px;
+}
+
+.workflow .actual.current.item:hover .event {
+	background-position: 0px -384px;
+}
+
+.personalflow .actual.current.item .event {
+	background-position: -32px -416px;
+}
+
+.personalflow .actual.current.item:hover .event {
+	background-position: -32px -384px;
 }
 
 .personalflow .past.item .fb, .personalflow .future.item .fb {
@@ -432,12 +465,28 @@ td {
 	background-position: -3px -256px;
 }
 
+.workflow .actual.current.item .report {
+	background-position: 0px -352px;
+}
+
+.workflow .actual.current.item:hover .report {
+	background-position: 0px -322px;
+}
+
+.personalflow .actual.current.item .tt {
+	background-position: -32px -352px;
+}
+
+.personalflow .actual.current.item:hover .tt {
+	background-position: -32px -322px;
+}
+
 .personalflow .past.item .tt, .personalflow .future.item .tt {
-	background-position: -35px -287px;
+	background-position: -35px -256px;
 }
 
 .personalflow .past.item:hover .tt, .personalflow .future.item:hover .tt {
-	background-position: -35px -256px;
+	background-position: -35px -288px;
 }
 
 .workflow .past.item .event, .workflow .future.item .event {
@@ -464,10 +513,10 @@ td {
 	background: transparent url('../img/shadow_small_bottom.png') center top no-repeat;
 }
 
-.tooltipWrap, .tourWrap {
+.tooltipWrap, .tourWrap, .optionsWrap {
 	display: none;
 	position: absolute;
-	z-index: 200;
+	z-index: 650;
 	max-width: 500px;
 }
 
@@ -475,7 +524,7 @@ td {
 	z-index: 1000;
 }
 
-.tooltip, .tour {
+.tooltip, .tour, .options {
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box; /* Firefox, other Gecko */
 	box-sizing: border-box; /* Opera/IE 8+ */
@@ -484,7 +533,7 @@ td {
 	font-size: 0.8em;
 }
 
-.tooltip h1, .tour h1 {
+.tooltip h1, .tour h1, .options h1 {
 	font-family: 'Graduate', serif;
 	text-transform: uppercase;
 	letter-spacing: 2px;
@@ -493,7 +542,7 @@ td {
 	margin: 20px 0 0;
 }
 
-.tooltip h2, .tour h2 {
+.tooltip h2, .tour h2, .options h2 {
 	font-family: 'Graduate', serif;
 	text-align: right;
 	text-transform: uppercase;
@@ -503,14 +552,25 @@ td {
 	margin: 0 0 0;
 }
 
-.tourWrap {
+.tooltip h3, .tour h3, .options h3 {
+	font-family: 'Graduate', serif;
+	text-align: center;
+	font-size: 1.8em;
+	font-weight: 400;
+	margin: 0 0 0;
+}
+
+.tourWrap,.optionsWrap {
 	left: 50%;
 	margin-left: -250px;
-	top: 150px;
 	width: 500px;
 }
 
-.tour {
+.tourWrap {
+	top: 150px;
+}
+
+.tour, .options {
 	background: transparent url('../img/bg_tour.png') repeat;
 }
 
@@ -520,6 +580,19 @@ td {
 	font-size: 2em;
 	font-weight: 400;
 	margin: 20px 0 0;
+}
+
+.optionsWrap {
+	bottom: 50px;
+}
+
+.optionsWrap .c50 {
+	float: left;
+	width: 50%;
+}
+
+.optionsWrap .c50.separator {
+	background: transparent url('../img/separator.png') top right no-repeat;
 }
 
 .social {
@@ -591,6 +664,10 @@ a.button.primary:hover {
 	font-size: 0.8em;
 }
 
+.template,.new {
+	display: none;
+}
+
 .sticky textarea {
 	position: relative;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -620,7 +697,7 @@ a.button.primary:hover {
 	position: absolute;
 	top: 5px;
 	right: 5px;
-	z-index: 400;
+	z-index: 250;
 	text-align: right;
 }
 
@@ -645,7 +722,7 @@ a.button.primary:hover {
 	background-position: -32px -48px;
 }
 
-.sticky:hover .tools a.pin {
+.sticky:hover .tools a.pin,.sticky .tools a.pin.active {
 	background-position: -16px -48px;
 }
 

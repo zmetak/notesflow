@@ -52,10 +52,12 @@ function connectDB()
 	));
 }
 
+foreach($_GET as $k => $v) $_GET[$k]=strip_tags($v);
+
 if(isset($_GET['write']) && $_GET['write']==true) {
 	connectDB();
-	$insert=array('ip'=>getIp(),'note'=>$_GET['text'],'coords'=>$_GET['x'].':'.$_GET['y'],'date'=>time());
-	$result = dibi::query('INSERT INTO [notes]',$insert);
+	$insert=array('ip'=>getIp(),'note'=>$_GET['text'],'x'=>$_GET['x'],'y'=>$_GET['y'],'id'=>$_GET['id'],'date'=>time());
+	$result = dibi::query('REPLACE INTO [notes]',$insert);
 	echo $result;
 }
 
@@ -63,6 +65,11 @@ if(isset($_GET['read']) && $_GET['read']==true) {
 	connectDB();
 	$result = dibi::fetchAll('SELECT * FROM [notes] WHERE [ip] LIKE %~like~',getIp());
 	echo json_encode($result);
+}
+
+if(isset($_GET['remove']) && $_GET['remove']==true && isset($_GET['id'])) {
+	connectDB();
+	$result = dibi::query('DELETE FROM [notes] WHERE [id]=%s LIMIT 1',$_GET['id']);
 }
  
 

@@ -2,7 +2,6 @@
 
 /*========================================session start============================================*/
 session_start();
-
 ?>
 <!DOCTYPE HTML>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -35,6 +34,11 @@ session_start();
         Workflow
       </header>
       <div class="flowitems" role="complementary">
+
+        <div class="future item template">
+          <img class="event" src="img/trans.png" />
+          <p></p>
+        </div>
 
         <div class="future item shadowonly"></div>
         <div class="future item">
@@ -113,6 +117,11 @@ session_start();
         Personalflow
       </header>
       <div class="flowitems" role="complementary">
+
+        <div class="future item template">
+          <img class="event" src="img/trans.png" />
+          <p></p>
+        </div>
 
         <div class="future item shadowonly"></div>
         <div class="future item">
@@ -313,6 +322,31 @@ session_start();
       </div>
 
     </section>
+    
+    <footer><a id="clock" href="#incomming"></a> | <a id="help" href="#help">Help</a> | <a id="options" href="#options">Options</a></footer>
+
+    <div class="optionsWrap">
+      <div class="options shadow sides">
+        <div class="message">
+        	<h1>Options</h1>
+        	<h2>(work in progress)</h2>
+        	<div class="c50 separator">
+        		<h3>Work</h3>
+        		<input type="checkbox" id="mails" name="mails" /><label for="mails">Mails:</label><br />
+        		<input type="checkbox" id="reports" name="reports" /><label for="reports">Reports:</label><br />
+        		<input type="checkbox" id="calendar" name="calendar" /><label for="calendar">Calendar:</label><br />
+        		<input type="checkbox" id="tasks" name="tasks" /><label for="tasks">Tasks:</label>
+        	</div>
+        	<div class="c50">
+        		<h3>Personal</h3>
+        		<label for="pmails">Mails:</label><input type="checkbox" id="pmails" name="pmails" /><br />
+        		<label for="twitter">Reports:</label><input type="checkbox" id="twitter" name="twitter" /><br />
+        	</div>
+        </div>
+        <a class="button close" href="#">close</a>
+        <div class="clearfix"></div>
+      </div>
+    </div>
 
     <div class="tourWrap">
       <div class="tour shadow sides">
@@ -326,8 +360,8 @@ session_start();
             Log in with one of these services...
           </p>
           <div>
-	          <a class="social twitter" title="twitter" href="#socialtwitter"></a>
-	          <a class="social facebook" title="facebook" href="#socialfacebook"></a>
+            <a class="social twitter" title="twitter" href="#socialtwitter"></a>
+            <a class="social facebook" title="facebook" href="#socialfacebook"></a>
           </div>
           <p class="right">
             ...or you could take a tour instead!
@@ -367,7 +401,9 @@ session_start();
     </script>
     <script src="js/libs/sketch.min.js"></script>
     <script src="js/libs/jquery-ui-1.8.21.custom.min.js"></script>
+    <script src="js/libs/jquery.alphanumeric.js"></script>
     <script src="js/js.js"></script>
+
     <!--
     <script>
     var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']]; ( function(d, t) {

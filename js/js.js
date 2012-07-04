@@ -1,14 +1,126 @@
+jQuery.fn.replaceClass = function(toReplace, replaceWith) {
+	return $(this).each(function() {
+		return $(this).removeClass(toReplace).addClass(replaceWith);
+	});
+}
 $(function() {
+
+	/*
+	 *
+	 *
+	 * DIGITAL CLOCK
+	 *
+	 *
+	 */
+
+	function updateClock() {
+	    var currentTime = new Date ( );
+	    var currentHours = currentTime.getHours ( );
+	    var currentMinutes = currentTime.getMinutes ( );
+	    var currentSeconds = currentTime.getSeconds ( );
+	    // Pad the minutes and seconds with leading zeros, if required
+	    currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+	    currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
+	    // Choose either "AM" or "PM" as appropriate
+	    var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
+	    // Convert the hours component to 12-hour format if needed
+	    currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
+	    // Convert an hours component of "0" to "12"
+	    currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+	    // Compose the string for display
+	    var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
+	    $("#clock").html(currentTimeString);   
+	}
+
+	setInterval(function(){updateClock()},1000);
+	
+	/*
+	*
+	*
+	* FLOWS ANIMATION ARCHITECTURE
+	*
+	*
+	*/
+	// 1. slide down the flow by the new height
+	// 2. after that fade out last element
+	// 3. at the same time fade in the new element
+	// 4. animate current item out
+	// 5. animate new current item in
+
+	var ni = 0;
+	function nextItemLoad() {
+		var fi = {};
+		///*
+		 fi=[
+		 {flow:'workflow',type:'report',text:'Do not forget about the schedule reporting tool!',timeout:2000},
+		 {flow:'personalflow',type:'event',text:'You will never come up with anything original if you are afraid to be wrong.',timeout:11000},
+		 {flow:'workflow',type:'meeting',text:'Meeting at the client side.',timeout:20000},
+		 {flow:'workflow',type:'email',text:'Remindal: you have dismissed the invitation for this meeting.',timeout:35000},
+		 {flow:'personalflow',type:'fb',text:'You have read an article on Times Magazine.',timeout:60000},
+		 {flow:'workflow',type:'report',text:'Do not forget about the schedule reporting tool!',timeout:65000},
+		 {flow:'personalflow',type:'email',text:'Carla: Hello Jules! Im just looking at the stuff you sent me, everything looks ok',timeout:78000},
+		 {flow:'workflow',type:'report',text:'Update TFS documentation according to designs.',timeout:110000},
+		 {flow:'workflow',type:'email',text:'Remindal: you have dismissed the invitation for this meeting.',timeout:115000},
+		 {flow:'personalflow',type:'fb',text:'You have read an article on Times Magazine.',timeout:120000}
+		 ];//*/
+		var v = fi[ni];
+		if (ni < fi.length) {
+			ni++;
+			console.log(ni + '.' + v.flow + ' >>>  ' + v.text + ' ' + v.timeout);
+
+			$('.new').removeClass('new');
+
+			$('.' + v.flow + ' .future.item.template').clone().addClass('new').removeClass('template').hide().insertAfter('.' + v.flow + ' .future.item.shadowonly').find('p').html(v.text);
+			$('.' + v.flow + ' .future.item.new img').replaceClass($(this).prop('class'), v.type);
+			$('.' + v.flow + ' .future.item.new').delay(v.timeout).show('fade', 500, function() {
+				nextItemLoad();
+				$('.' + v.flow + ' .future.current.item').prev().addClass('current');
+				$('.' + v.flow + ' .actual.current.item').prev().removeClass('future').addClass('actual');
+				$('.' + v.flow + ' .past.current.item').removeClass('current').prev().removeClass('actual').addClass('past');
+			});
+		};
+	}
+
 
 	$('.flowitems').show('slide', {
 		direction : 'up'
-	}, 3000);
+	}, 3000, function() {
+		nextItemLoad();
+	});
+
+	/*
+	 *
+	 *
+	 * LOAD SAVED STICKIES
+	 *
+	 *
+	 */
 	
-	
-	var c={read:true};
-	var d=sendAjax(c);
-	
-	
+	var opt = {
+		read : true
+	};
+	$.get('php/ajax.php', opt, function(data) {
+		res = $.parseJSON(data);
+		console.log(res);
+		$.each(res, function(k, v) {
+			console.log('creating sticky:' + v.id + ' on coordinates: x=' + v.x + ' y=' + v.y);
+			$('.stickyWrap.template').clone(true, true).removeClass('template').css({
+				top : v.y,
+				left : v.x
+			}).data('pinned', true).data('id', v.id).appendTo('.notes').show().find('textarea').val(v.note);
+		});
+	});
+
+	/*
+	 *
+	 *
+	 * ALLOW ONLY ALPHANUMERIC
+	 *
+	 *
+	 */
+	$('textarea,input[type="text"]').alphanumeric({
+		allow : "., -_?!"
+	});
 
 	/*
 	 *
@@ -40,6 +152,7 @@ $(function() {
 			display : 'table'
 		}).find('#sketchPad').sketch();
 		$('.sketchTools').show('fade', 500);
+		$('.stickyWrap:not(.template) textarea:empty').closest('.stickyWrap').hide();
 		//$('.stickyWrap').hide();
 	}
 
@@ -60,11 +173,11 @@ $(function() {
 		var y = e.pageY - this.offsetTop;
 		var rid = randString();
 		$('.stickyWrap:not(.template)').each(function() {
-			if (!$(this).data('pinned'))
+			if ($(this).find('textarea').val() != '')
+				$(this).data('pinned', true).find('.pin').addClass('active');
+			else if (!$(this).data('pinned'))
 				$(this).remove();
-
 		});
-		//TODO: missclick removes the sticky note
 		$('.stickyWrap.template').clone(true, true).removeClass('template').css({
 			top : y + 5,
 			left : x + 5
@@ -84,30 +197,40 @@ $(function() {
 		return text;
 	}
 
+
 	$('.sticky').on('click', function(e) {
 		e.preventDefault();
 		e.stopPropagation();
 	});
-	
+
+	var res;
 	function sendAjax(contents) {
-		$.get('php/ajax.php',contents,function(data){
-			var res=$.parseJSON(data);
+		$.get('php/ajax.php', contents, function(data) {
+			res = $.parseJSON(data);
 			console.log(data);
-			return res;
 		});
-		return res;
 	}
-	
+
+
 	$('.sticky textarea').on('blur', function(e) {
-		console.log('calling ajax for help: write procedure');
-		var c={write:true,text:$(this).val(),x:$(this).position().left,y:$(this).position().top};
-		sendAjax(c);
+		var $$ = $(this);
+		var $w = $$.closest('.stickyWrap');
+		console.log('calling ajax for help: write procedure on ' + $w.data('id'));
+		if ($$.val() != '')
+			opt = {
+				write : true,
+				id : $w.data('id'),
+				text : $$.val(),
+				x : $w.position().left,
+				y : $w.position().top
+			};
+		sendAjax(opt);
 	});
 
 	$('.sticky .pin').on('click', function(e) {
 		e.preventDefault();
 		e.stopPropagation();
-		$(this).closest('.stickyWrap').data('pinned', true);
+		$(this).addClass('active').closest('.stickyWrap').data('pinned', true);
 		console.log($(this).closest('.stickyWrap').data('id') + ' pinned');
 	});
 
@@ -116,9 +239,10 @@ $(function() {
 		e.stopPropagation();
 		var $sW = $(this).closest('.stickyWrap');
 		var t = $(this).closest('.sticky').find('textarea').val();
-		if (t == '')
+		console.log($sW.data('id') + ' with value ' + t + ' closing');
+		if (t == '') {
 			$(this).closest('.stickyWrap').hide('fade', 500);
-		else {
+		} else {
 			var w = $sW.width();
 			var y = $sW.position().top;
 			var x = $sW.position().left;
@@ -135,7 +259,16 @@ $(function() {
 		e.preventDefault();
 		e.stopPropagation();
 		$(this).closest('.tooltipWrap').hide('fade', 500);
-		$('.removalTarget.stickyWrap:not(.template)').hide('fade', 500);
+		$w = $('.removalTarget.stickyWrap:not(.template)');
+		$w.hide('fade', 500);
+		if ($w.find('textarea').val() != '') {
+			opt = {
+				remove : true,
+				id : $w.data('id')
+			};
+			sendAjax(opt);
+		}
+		console.log($w.data('id') + ' with value ' + $w.find('textarea').val() + ' removing');
 	});
 
 	$('.button.action1').on('click', function(e) {
@@ -190,6 +323,7 @@ $(function() {
 	 */
 
 	var t = 0;
+	var tmax=0;
 	function TourTooltipsQueue() {
 		var tt = {};
 		///*
@@ -200,7 +334,8 @@ $(function() {
 		 {obj:'#trianglemap',evnt:'click',xo:'250',yo:'150',text:'When in sketch mode you can share screen with others, export picture you draw or even collaborate with others on drawing it.'},
 		 {obj:'#trianglemap',evnt:'click',xo:'250',yo:'150',text:'Just click the area in notes mode and create sticky notes anywhere you like. You can pin them for later use.'},
 		 ];//*/
-		if (t < tt.length) {
+		tmax=tt.length;
+		if (t < tmax) {
 			$('.tourWrap').find('.message').html(tt[t].text);
 			var v = tt[t];
 			var y = $(v.obj).position().top;
@@ -232,14 +367,13 @@ $(function() {
 				margin : 0
 			}).show('fade', 500);
 			t++;
-		}
-	}
-	
+		}	}
+
 
 	$('.tourWrap').delay(500).fadeIn();
 	$('.tourWrap a.next,a.startTour').on('click', function(e) {
 		e.preventDefault();
-		$(this).text('show me another feature');
+		$(this).text((t==0 || (t+1)<tmax) ? 'show me another feature' : 'finish tour');
 		$('.tooltipWrap').hide();
 		$('#loading').hide('fade', 500);
 		$('.tourWrap').hide('fade', 500, function() {
@@ -272,10 +406,10 @@ $(function() {
 		///*
 		 tt=[
 		 {obj:'.social',evnt:'click',xo:'980',yo:'2050',text:'Assignment guidelines forbid the requirement to log into any service to access the prototype, therefore Notesflow will act as you were <a href="https://twitter.com/#!/zmetak">zmetak</a> on twitter.'},
-		 {obj:'#trianglemap',evnt:'click',xo:'40%',yo:'300',text:'Congratulations, you have entered the sketch mode!<br /><br />Now... try to sketch something over this message!<br /> You can exit or enter the sketching mode anytime by double-clicking or by pressing the triangle up there.'},
+		 {obj:'#trianglemap',evnt:'click',xo:'40%',yo:'300',text:'Congratulations, you have entered the sketch mode!<br /><br />Now... try to sketch something!<br /><br />You can exit or enter the sketching mode anytime by <strong>double-clicking</strong> or by pressing the triangle up there.'},
 		 {obj:'.workflow',evnt:'click',xo:'10',yo:'100',text:'Unfortunately there wasnt enough time to implement any reasonable functionality. Thats why the stripped out mail is being shown.'},
 		 {obj:'.personalflow',evnt:'click',xo:'70%',yo:'100',text:'Doh, hopefuly this fancy minimalist calendar would keep you from requesting any more functionality.'},
-		 {obj:'.sketchTools',evnt:'click',xo:'70%',yo:'80%',text:'There is a lot of potential here - different colors, exporting to friends, sharing via social networks, sharing screen while drawing etc...'},
+		 {obj:'.notes',evnt:'dblclick',xo:'70%',yo:'2000',text:'There is a lot of potential here - different colors, exporting to friends, sharing via social networks, sharing screen while drawing etc...'},
 		 {obj:'.notes',evnt:'click',xo:'20%',yo:'20%',text:'Try to write something in the textbox and remove the sticky.'},
 		 ];//*/
 		$('.tooltip').data('show', true);
@@ -343,6 +477,10 @@ $(function() {
 	 *
 	 *
 	 */
+	$('#options').on('click',function(e){
+		e.preventDefault();
+		$('.optionsWrap').show('fade',500);
+	});
 
 	$('.personalflow .item').on('click', function() {
 		$('.calendarWrap').show('slide', {
