@@ -16,21 +16,9 @@ session_start();
  * logic
  * 
  * */
- 
 function getIp()
 {
-    if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
-    {
-      $ip=$_SERVER['HTTP_CLIENT_IP'];
-    }
-    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
-    {
-      $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
-    }
-    else
-    {
-      $ip=$_SERVER['REMOTE_ADDR'];
-    }
+    $ip=$_SERVER['REMOTE_ADDR'];
     return $ip;
 }
 
@@ -44,11 +32,12 @@ function printr($a)
 function connectDB()
 {
 	dibi::connect(array(
-	    'driver'   => 'mysql',
-	    'host'     => 'localhost',
-	    'username' => 'notesflow',
-	    'password' => 'moncicak',
-	    'database' => 'notesflow'
+	    'driver'   	=> 	'mysql',
+	    'host'     	=> 	'localhost',
+	    'port'		=>	':/tmp/mysql51.sock',
+	    'username' 	=> 	'notesflow',
+	    'password' 	=> 	'moncicak',
+	    'database' 	=> 	'notesflow'
 	));
 }
 
@@ -71,6 +60,4 @@ if(isset($_GET['remove']) && $_GET['remove']==true && isset($_GET['id'])) {
 	connectDB();
 	$result = dibi::query('DELETE FROM [notes] WHERE [id]=%s LIMIT 1',$_GET['id']);
 }
- 
-
 ?>

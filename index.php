@@ -1,8 +1,3 @@
-<?php
-
-/*========================================session start============================================*/
-session_start();
-?>
 <!DOCTYPE HTML>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -322,27 +317,67 @@ session_start();
       </div>
 
     </section>
-    
-    <footer><a id="clock" href="#incomming"></a> | <a id="help" href="#help">Help</a> | <a id="options" href="#options">Options</a></footer>
+
+    <footer>
+      <a id="clock" href="#incomming"></a> | <a id="help" href="#help">Help</a> | <a id="options" href="#options">Options</a>
+    </footer>
 
     <div class="optionsWrap">
       <div class="options shadow sides">
         <div class="message">
-        	<h1>Options</h1>
-        	<h2>(work in progress)</h2>
-        	<div class="c50 separator">
-        		<h3>Work</h3>
-        		<input type="checkbox" id="mails" name="mails" /><label for="mails">Mails:</label><br />
-        		<input type="checkbox" id="reports" name="reports" /><label for="reports">Reports:</label><br />
-        		<input type="checkbox" id="calendar" name="calendar" /><label for="calendar">Calendar:</label><br />
-        		<input type="checkbox" id="tasks" name="tasks" /><label for="tasks">Tasks:</label>
-        	</div>
-        	<div class="c50">
-        		<h3>Personal</h3>
-        		<label for="pmails">Mails:</label><input type="checkbox" id="pmails" name="pmails" /><br />
-        		<label for="twitter">Reports:</label><input type="checkbox" id="twitter" name="twitter" /><br />
-        	</div>
+          <h1>Options</h1>
+          <h2>(work in progress)</h2>
+          <div class="c50 left separator">
+            <h3>Work</h3>
+            <section>
+              <h4 class="collapsed"><img class="email" src="img/trans.png" />Mails<div></div></h4>
+              <div class="collapsable">
+                <input type="checkbox" id="mails" name="mails" />
+                <label for="mails">Mails:</label>
+              </div>
+            </section>
+            <section>
+              <h4 class="collapsed">Reports<div></div></h4>
+              <div class="collapsable">
+                <input type="checkbox" id="reports" name="reports" />
+                <label for="reports">Reports:</label>
+              </div>
+            </section>
+            <section>
+              <h4 class="collapsed">Schedule<div></div></h4>
+              <div class="collapsable">
+                <input type="checkbox" id="calendar" name="calendar" />
+                <label for="calendar">Calendar:</label>
+                <br />
+                <input type="checkbox" id="tasks" name="tasks" />
+                <label for="tasks">Tasks:</label>
+              </div>
+            </section>
+          </div>
+          <div class="c50 right">
+            <h3>Personal</h3>
+            <section>
+              <h4 class="collapsed"><img class="email" src="img/trans.png" />Mails<div></div></h4>
+
+              <div class="collapsable">
+                <label for="pmails">Mails:</label>
+                <input type="checkbox" id="pmails" name="pmails" />
+              </div>
+            </section>
+            <section>
+              <h4 class="collapsed">Social<div></div></h4>
+              <div class="collapsable">
+                <label for="twitter">Twitter:</label>
+                <input type="checkbox" id="twitter" name="twitter" />
+              </div>
+            </section>
+            <section>
+              <h4 class="collapsed">Schedule<div></div></h4>
+              <div class="collapsable"></div>
+            </section>
+          </div>
         </div>
+        <div class="clearfix"></div>
         <a class="button close" href="#">close</a>
         <div class="clearfix"></div>
       </div>

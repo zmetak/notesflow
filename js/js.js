@@ -96,20 +96,25 @@ $(function() {
 	 *
 	 */
 	
-	var opt = {
-		read : true
-	};
-	$.get('php/ajax.php', opt, function(data) {
-		res = $.parseJSON(data);
-		console.log(res);
-		$.each(res, function(k, v) {
-			console.log('creating sticky:' + v.id + ' on coordinates: x=' + v.x + ' y=' + v.y);
-			$('.stickyWrap.template').clone(true, true).removeClass('template').css({
-				top : v.y,
-				left : v.x
-			}).data('pinned', true).data('id', v.id).appendTo('.notes').show().find('textarea').val(v.note);
+	function readAjax()	{
+		var opt = {
+			read : true
+		};
+		
+		$.get('php/ajax.php', opt, function(data) {
+			res = $.parseJSON(data);
+			console.log(res);
+			$.each(res, function(k, v) {
+				console.log('creating sticky:' + v.id + ' on coordinates: x=' + v.x + ' y=' + v.y);
+				$('.stickyWrap.template').clone(true, true).removeClass('template').css({
+					top : v.y,
+					left : v.x
+				}).data('pinned', true).data('id', v.id).appendTo('.notes').show().find('textarea').html(v.note);
+			});
 		});
-	});
+	}
+
+	readAjax(); //on init
 
 	/*
 	 *
@@ -141,7 +146,7 @@ $(function() {
 			$(this).removeData('sketch');
 		});
 		$('.sketchTools').hide('fade', 500);
-		//$('.stickyWrap').hide();
+		//readAjax();
 	}
 
 	function CreateSketchPad() {
@@ -153,7 +158,6 @@ $(function() {
 		}).find('#sketchPad').sketch();
 		$('.sketchTools').show('fade', 500);
 		$('.stickyWrap:not(.template) textarea:empty').closest('.stickyWrap').hide();
-		//$('.stickyWrap').hide();
 	}
 
 	/*
@@ -479,7 +483,16 @@ $(function() {
 	 */
 	$('#options').on('click',function(e){
 		e.preventDefault();
-		$('.optionsWrap').show('fade',500);
+		$('.optionsWrap').toggle('fade',500);
+	});
+	
+	$('.optionsWrap .close').on('click',function(e){
+		e.preventDefault();
+		$('.optionsWrap').hide('fade',500);
+	});
+	
+	$('.optionsWrap section h4').on('click',function(e){
+		$(this).toggleClass('collapsed').toggleClass('expanded').next('.collapsable').slideToggle();
 	});
 
 	$('.personalflow .item').on('click', function() {

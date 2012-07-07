@@ -357,7 +357,7 @@ footer a:hover {
 	margin: 0;
 }
 
-.item img {
+.item img,.options img {
 	margin: 15px 10px;
 	float: left;
 	background: transparent url('../img/sprites.png') 0 0 no-repeat;
@@ -567,7 +567,7 @@ footer a:hover {
 }
 
 .tourWrap {
-	top: 150px;
+	top: 15%;
 }
 
 .tour, .options {
@@ -593,6 +593,102 @@ footer a:hover {
 
 .optionsWrap .c50.separator {
 	background: transparent url('../img/separator.png') top right no-repeat;
+}
+
+.optionsWrap h4 {
+	background: rgba(255,255,255,0.2);
+	padding: 6px 15px 5px;
+	line-height: 22px;
+	cursor: pointer;
+}
+
+.optionsWrap .c50.left h4 {
+	margin: 5px 20px 5px 0px;
+}
+
+.optionsWrap .c50.right h4 {
+	margin: 5px 0px 5px 20px;
+}
+
+.optionsWrap h4:hover {
+	color: #516083;
+	background: rgba(255,255,255,0.2);
+}
+
+.optionsWrap h4 div {
+	display: block;
+	width: 15px;
+	height: 15px;
+	background: transparent url('../img/smalltriangle.png') 0px 0px no-repeat;
+}
+
+.optionsWrap .c50.right h4 div {
+	float: left;
+}
+
+.optionsWrap .c50.left h4 div {
+	float: right;
+}
+
+.optionsWrap div.collapsable {
+	display:none;
+}
+
+.optionsWrap h4.collapsed div {
+	background-position: 0px 0px;
+	
+}
+
+.optionsWrap h4.collapsed:hover div {
+	background-position: 0px -15px;
+}
+
+.optionsWrap h4.expanded div {
+	background-position: -15px 0px;
+}
+
+.optionsWrap h4.expanded:hover div {
+	background-position: -15px -15px;
+}
+
+.options img {
+	padding: 0;
+	width: 24px;
+	height: 22px;
+}
+
+.options .left img {
+	margin: 0 5px 0 0;
+	float: left;
+}
+
+.options .right img {
+	margin: 0 0 0 5px;
+	float: right;
+}
+
+.options h4 .email {
+	background-position: -37px -102px;
+}
+
+.options h4:hover .email {
+	background-position: -37px -68px;
+}
+
+.options h4 .report {
+	background-position: -37px -102px;
+}
+
+.options h4:hover .report {
+	background-position: -37px -68px;
+}
+
+.options h4 .socialmedia {
+	background-position: -37px -102px;
+}
+
+.options h4:hover .socialmedia {
+	background-position: -37px -68px;
 }
 
 .social {
